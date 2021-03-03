@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
-export default ({ inp, setInp }) => (
+const TypeBar: FunctionComponent<{
+  inp: string;
+  setInp: (input: string) => void;
+}> = ({ inp, setInp }) => (
   <div className="row mt-5">
     <div className="col-md-6 offset-md-3 col-12">
-      <div className="text font-primary my-2">Start Typing</div>
+      <div className="text font-primary my-2">Start typing to begin game!</div>
       <input
         type="text"
         className="form-control"
@@ -14,3 +17,5 @@ export default ({ inp, setInp }) => (
     </div>
   </div>
 );
+
+export default TypeBar;

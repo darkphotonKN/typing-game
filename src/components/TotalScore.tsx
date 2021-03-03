@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 
-export default ({ words, inp, timeElapsed, setTimeStarted }) => {
+const TotalScore: FunctionComponent<{
+  words: string;
+  inp: string;
+  timeElapsed: number;
+  setTimeStarted: (time: boolean) => void;
+}> = ({ words, inp, timeElapsed, setTimeStarted }) => {
   useEffect(() => {
     setTimeStarted(false);
   }, [words === inp]);
@@ -13,7 +18,7 @@ export default ({ words, inp, timeElapsed, setTimeStarted }) => {
     return acc;
   }, 0);
 
-  const renderScore = () => {
+  const renderScore: () => number = () => {
     return (score / timeElapsed) * 100;
   };
 
@@ -29,3 +34,5 @@ export default ({ words, inp, timeElapsed, setTimeStarted }) => {
     </h4>
   );
 };
+
+export default TotalScore;

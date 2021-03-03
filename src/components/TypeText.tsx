@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
-export default ({ words, inp }) => (
+const TypeText: FunctionComponent<{ words: string; inp: string }> = ({
+  words,
+  inp,
+}) => (
   <div className="row mt-5">
     <div className="col-md-6 offset-md-3 col-12">
       {words.split('').map((char, index) => (
@@ -19,3 +22,5 @@ export default ({ words, inp }) => (
     </div>
   </div>
 );
+
+export default TypeText;
