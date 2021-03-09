@@ -11,30 +11,37 @@ const App = () => {
   const [timerStarted, setTimerStarted] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
 
+  const [id, setId] = useState('');
+
   useEffect(() => {
     if (timerStarted || inp.length === 0) {
       return;
     } else {
+      console.log('Timer started');
       setTimerStarted(true);
     }
   }, [inp]);
 
+  let intervalId;
   useEffect(() => {
-    let intervalId;
     if (timerStarted) {
       intervalId = setInterval(() => {
         setTimeElapsed((prev) => prev + 1);
       }, 1000);
+
+      setId(intervalId);
     } else {
-      console.log('clearing interval...');
-      clearInterval(intervalId);
+      clearInterval(id);
+      console.log('Timer stopped...');
     }
   }, [timerStarted]);
 
   console.log(timeElapsed);
+  console.log('timerStarted:', timerStarted);
 
   return (
     <div className="app container">
+      <button onClick={() => clearInterval(id)}>STOP!</button>
       <h3 className="mt-4">Typing Game</h3>
       <TotalScore
         words={words}
